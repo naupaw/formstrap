@@ -3,8 +3,8 @@ import { Form, Formik } from 'formik';
 import * as React from 'react';
 import 'react-app-polyfill/ie11';
 import * as ReactDOM from 'react-dom';
-import { Col, CustomInput, FormGroup, Label, Row } from 'reactstrap';
-import { Input, Submit } from '../.';
+import { Col, FormGroup, Label, Row } from 'reactstrap';
+import { CustomInput, Input, Submit } from '../.';
 import './app.css';
 
 const App = () => {
@@ -21,7 +21,12 @@ const App = () => {
       <Row>
         <Col sm={6}>
           <Formik
-            initialValues={{ username: '', email: '' }}
+            initialValues={{
+              username: '',
+              email: '',
+              gender: 'l',
+              lights_1: 1,
+            }}
             onSubmit={onSubmit}
           >
             <Form>
@@ -38,43 +43,28 @@ const App = () => {
                 />
               </FormGroup>
               <FormGroup>
-                <CustomInput
-                  type="checkbox"
-                  label="Remember me"
-                  id="remember-me"
-                />
+                <CustomInput type="checkbox" name="accepted" label="Checked" />
+              </FormGroup>
+              <FormGroup>
+                <CustomInput type="switch" name="lights_1" label="Lampu 1" />
+                <CustomInput type="switch" name="lights_2" label="Lampu 2" />
+                <CustomInput type="switch" name="lights_3" label="Lampu 3" />
               </FormGroup>
               <FormGroup>
                 <CustomInput
                   type="radio"
-                  label="Male"
-                  id="gender-m"
                   name="gender"
-                />
-                <CustomInput
-                  type="radio"
-                  label="Female"
                   id="gender-f"
-                  name="gender"
+                  value="p"
+                  label="Perempuan"
                 />
-              </FormGroup>
-              <FormGroup>
                 <CustomInput
-                  type="switch"
-                  name="switched"
-                  label="turn this on"
-                  id="turn-this-on"
+                  type="radio"
+                  name="gender"
+                  id="gender-m"
+                  value="l"
+                  label="Laki-Laki"
                 />
-              </FormGroup>
-              <FormGroup>
-                <CustomInput type="select">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </CustomInput>
-              </FormGroup>
-              <FormGroup>
-                <CustomInput type="file" label="Select file" />
               </FormGroup>
               <FormGroup>
                 <Submit color="primary">Simpan</Submit>
