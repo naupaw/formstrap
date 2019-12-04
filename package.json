@@ -1,10 +1,10 @@
 {
-  "name": "formik-reactstrap",
+  "name": "formstrap",
   "version": "0.1.0",
   "license": "MIT",
   "author": "pedox",
   "main": "dist/index.js",
-  "module": "dist/formik-reactstrap.esm.js",
+  "module": "dist/formstrap.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -13,12 +13,14 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "gh-pages": "cd example && yarn build",
+    "deploy-gh-pages": "gh-pages -d example/dist"
   },
   "peerDependencies": {
-    "react": ">=16",
     "bootstrap": "^4.4.1",
     "formik": "^2.0.6",
+    "react": ">=16",
     "reactstrap": "^8.1.1"
   },
   "husky": {
@@ -39,6 +41,7 @@
     "@types/reactstrap": "^8.0.6",
     "bootstrap": "^4.4.1",
     "formik": "^2.0.6",
+    "gh-pages": "^2.1.1",
     "husky": "^3.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
