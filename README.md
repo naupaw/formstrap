@@ -1,6 +1,8 @@
 # Formstrap
 
-The fusion of Formik + Reacstrap
+Let your reactstrap input component integrate seamlessly using formik
+
+[**Demo**](http://pedox.github.com/formstrap/)
 
 Installation
 
@@ -44,7 +46,7 @@ const App = () => {
           <Label>Name</Label>
           <Input type="text" name="fname" />
         </FormGroup>
-        <Submit>Save</Submit>
+        <Submit withSpinner>Save</Submit>
       </Form>
     </Formik>
   );
@@ -67,18 +69,18 @@ All props is extends from default Reactstrap Input props here's the thing that w
 
 ## @todo feature
 
-- [ ] Input
+- [x] Input
   - [x] Input field (text, password, textarea, etc...)
   - [x] Select
   - [x] props
     - [x] withLoading
     - [x] withFeedback
-- [ ] CustomInput
+- [x] CustomInput
   - [x] Input field (text, password, textarea, etc...)
   - [x] Select
   - [x] Checkbox
   - [x] Radio
-  - [ ] File Uploads
+  - [x] File Uploads
   - [x] props
     - [x] withLoading
     - [x] withFeedback
