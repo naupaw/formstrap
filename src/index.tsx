@@ -1,9 +1,11 @@
-import * as React from 'react';
-import { ButtonProps, CustomInputProps, InputProps } from 'reactstrap';
+// import { ButtonProps, CustomInputProps, InputProps } from 'reactstrap';
 export * from './CustomInput';
 export * from './Input';
 export * from './Submit';
+import { CustomInputProps } from './CustomInput';
+import { InputProps } from './Input';
+import { SubmitProps } from './Submit';
 
 export declare const Input: React.FC<InputProps>;
-export declare const Submit: React.FC<ButtonProps>;
+export declare const Submit: React.FC<SubmitProps>;
 export declare const CustomInput: React.FC<CustomInputProps>;

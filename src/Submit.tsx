@@ -1,18 +1,28 @@
 import { useFormikContext } from 'formik';
 import React, { Fragment } from 'react';
-import { Button, ButtonProps, Spinner } from 'reactstrap';
+import { Button, ButtonProps as BsButtonProps, Spinner } from 'reactstrap';
 
-export const Submit: React.FC<ButtonProps> = props => {
+export interface SubmitProps extends BsButtonProps {
+  withLoading?: boolean;
+  withSpinner?: boolean;
+}
+
+export const Submit: React.FC<SubmitProps> = props => {
   const { isSubmitting } = useFormikContext();
+  const { withLoading, withSpinner } = props;
 
-  let disabled = isSubmitting;
+  let disabled = withLoading ? isSubmitting : false;
+
+  if (props.disabled) {
+    disabled = true;
+  }
 
   if (props.disabled) {
     disabled = true;
   }
 
   const Submitting = () => {
-    if (isSubmitting) {
+    if (withSpinner && isSubmitting) {
       return (
         <Fragment>
           <Spinner size="sm" />{' '}
@@ -30,4 +40,8 @@ export const Submit: React.FC<ButtonProps> = props => {
       </Button>
     </Fragment>
   );
+};
+Submit.defaultProps = {
+  color: 'primary',
+  withLoading: true,
 };

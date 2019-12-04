@@ -16,7 +16,10 @@
     "lint": "tsdx lint"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=16",
+    "bootstrap": "^4.4.1",
+    "formik": "^2.0.6",
+    "reactstrap": "^8.1.1"
   },
   "husky": {
     "hooks": {

@@ -51,23 +51,38 @@ const App = () => {
 };
 ```
 
+## Additional Props
+
+All props is extends from default Reactstrap Input props here's the thing that we added.
+
+### `<Input />` and `<CustomInput />`
+
+- **withLoading?**: _boolean_ - Input is disabled when submit / isSubmitting occur
+- **withFeedback?**: _boolean_ - Throw feedback when validation has error
+
+### `<Submit />`
+
+- **withLoading?**: _boolean_ - Button is disabled when submit / isSubmitting occur
+- **withSpinner?**: _boolean_ - Show spinner icon when submit / isSubmitting occur
+
 ## @todo feature
 
 - [ ] Input
   - [x] Input field (text, password, textarea, etc...)
   - [x] Select
-  - [ ] props
-    - [ ] withLoading
-    - [ ] withFeedback
+  - [x] props
+    - [x] withLoading
+    - [x] withFeedback
 - [ ] CustomInput
   - [x] Input field (text, password, textarea, etc...)
   - [x] Select
   - [x] Checkbox
   - [x] Radio
   - [ ] File Uploads
-  - [ ] props
-    - [ ] withLoading
-    - [ ] withFeedback
+  - [x] props
+    - [x] withLoading
+    - [x] withFeedback
 - [x] Submit
-  - [ ] withSpinner
+  - [x] withLoading
+  - [x] withSpinner
 - [ ] FormBlocker _block form when loading (prevent input change from user)_

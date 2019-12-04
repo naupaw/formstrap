@@ -1,6 +1,15 @@
 import { getIn, useFormikContext } from 'formik';
 import React, { Fragment } from 'react';
-import { FormFeedback, Input as BsInput, InputProps } from 'reactstrap';
+import {
+  FormFeedback,
+  Input as BsInput,
+  InputProps as BsInputProps,
+} from 'reactstrap';
+
+export interface InputProps extends BsInputProps {
+  withLoading?: boolean;
+  withFeedback?: boolean;
+}
 
 export const Input: React.FC<InputProps> = props => {
   const {
@@ -11,12 +20,12 @@ export const Input: React.FC<InputProps> = props => {
     handleChange,
     handleBlur,
   } = useFormikContext();
-  const { name } = props;
+  const { name, withFeedback, withLoading } = props;
   const error = getIn(errors, name as string);
   const value = getIn(values, name as string);
   const touch = getIn(touched, name as string);
 
-  let disabled = isSubmitting;
+  let disabled = withLoading ? isSubmitting : false;
 
   if (props.disabled) {
     disabled = true;
@@ -33,7 +42,15 @@ export const Input: React.FC<InputProps> = props => {
         name={name}
         invalid={touch && error}
       />
-      {touch && error ? <FormFeedback>{error}</FormFeedback> : ''}
+      {withFeedback && touch && error ? (
+        <FormFeedback>{error}</FormFeedback>
+      ) : (
+        ''
+      )}
     </Fragment>
   );
+};
+Input.defaultProps = {
+  withLoading: true,
+  withFeedback: true,
 };
