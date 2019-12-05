@@ -41,12 +41,49 @@ const App = () => {
     <div className="app">
       <h1>formstrap</h1>
       <p>
+        <a
+          href="https://badge.fury.io/js/formstrap"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://badge.fury.io/js/formstrap.svg"
+            alt="npm version"
+            height="18"
+          />
+        </a>
+        &nbsp;
+        <a
+          href="https://github.com/reactstrap/reactstrap"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://img.shields.io/npm/dependency-version/formstrap/peer/reactstrap"
+            alt="reactstrap version"
+            height="18"
+          />
+        </a>
+        &nbsp;
+        <a
+          href="https://github.com/jaredpalmer/formik"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://img.shields.io/npm/dependency-version/formstrap/peer/formik"
+            alt="formik version"
+            height="18"
+          />
+        </a>
+      </p>
+      <p>
         Let your reactstrap input component integrate seamlessly using formik
       </p>
       <p>Installation</p>
-      <pre>npm install formstrap</pre>
+      <pre>npm install bootstrap reactstrap formik formstrap</pre>
       <p>OR</p>
-      <pre>yarn add formstrap</pre>
+      <pre>yarn add bootstrap reactstrap formik formstrap</pre>
       <hr />
       <h2>Form Example</h2>
       <Row>

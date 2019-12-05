@@ -1,6 +1,6 @@
 # Formstrap
 
-[![npm version](https://badge.fury.io/js/formstrap.svg)](https://badge.fury.io/js/formstrap)
+[![npm version](https://badge.fury.io/js/formstrap.svg)](https://badge.fury.io/js/formstrap) [![reactstrap version](https://img.shields.io/npm/dependency-version/formstrap/peer/reactstrap)](https://github.com/reactstrap/reactstrap) [![formik version](https://img.shields.io/npm/dependency-version/formstrap/peer/formik)](https://github.com/jaredpalmer/formik)
 
 Let your reactstrap input component integrate seamlessly using formik
 
@@ -9,13 +9,13 @@ Let your reactstrap input component integrate seamlessly using formik
 Installation
 
 ```
-npm install formstrap
+npm install bootstrap reactstrap formik formstrap
 ```
 
 Or
 
 ```
-yarn add formstrap
+yarn add bootstrap reactstrap formik formstrap
 ```
 
 _make sure both Formik, reactstrap and bootstrap installed_
@@ -29,6 +29,8 @@ import Ract from 'react';
 import { Formik, Form } from 'formik';
 import { Input, Submit } from 'formstrap';
 import { FormGroup } from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => {
   const initialValues = {
