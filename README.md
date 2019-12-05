@@ -1,5 +1,7 @@
 # Formstrap
 
+[![npm version](https://badge.fury.io/js/formstrap.svg)](https://badge.fury.io/js/formstrap)
+
 Let your reactstrap input component integrate seamlessly using formik
 
 [**Demo**](http://pedox.github.com/formstrap/)
