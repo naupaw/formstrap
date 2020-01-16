@@ -11,7 +11,13 @@ export interface CustomInputProps extends BsCustomInputProps {
   withFeedback?: boolean;
 }
 
-export const CustomInput: React.FC<CustomInputProps> = props => {
+export const CustomInput: React.FC<CustomInputProps> = ({
+  name,
+  withLoading,
+  withFeedback,
+  type,
+  ...props
+}) => {
   const {
     errors,
     values,
@@ -21,7 +27,6 @@ export const CustomInput: React.FC<CustomInputProps> = props => {
     setFieldValue,
     handleBlur,
   } = useFormikContext();
-  const { name, withLoading, withFeedback, type } = props;
   const error = getIn(errors, name as string);
   const value = getIn(values, name as string);
   const touch = getIn(touched, name as string);
@@ -34,7 +39,7 @@ export const CustomInput: React.FC<CustomInputProps> = props => {
 
   const additionalProps = () => {
     const addProps: any = {};
-    switch (props.type) {
+    switch (type) {
       case 'checkbox':
         addProps.checked =
           value === '1' || value === 1 || value === true ? true : false;
@@ -49,14 +54,14 @@ export const CustomInput: React.FC<CustomInputProps> = props => {
     }
 
     if (!props.id) {
-      addProps.id = props.type + '_' + name;
+      addProps.id = type + '_' + name;
     }
 
     return addProps;
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    switch (props.type) {
+    switch (type) {
       case 'checkbox':
         setFieldValue(name as never, e.target.checked ? 1 : 0);
         break;
@@ -93,10 +98,11 @@ export const CustomInput: React.FC<CustomInputProps> = props => {
         {...props}
         {...additionalProps()}
         name={name}
+        type={type}
         disabled={disabled}
         onChange={onChange}
         onBlur={handleBlur}
-        invalid={touch && error}
+        invalid={touch && error ? true : false}
       >
         {feedBackInsideChild() ? feedback() : props.children}
       </BsCustomInput>

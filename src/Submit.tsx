@@ -7,9 +7,12 @@ export interface SubmitProps extends BsButtonProps {
   withSpinner?: boolean;
 }
 
-export const Submit: React.FC<SubmitProps> = props => {
+export const Submit: React.FC<SubmitProps> = ({
+  withLoading,
+  withSpinner,
+  ...props
+}) => {
   const { isSubmitting } = useFormikContext();
-  const { withLoading, withSpinner } = props;
 
   let disabled = withLoading ? isSubmitting : false;
 

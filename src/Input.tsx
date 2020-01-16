@@ -11,7 +11,12 @@ export interface InputProps extends BsInputProps {
   withFeedback?: boolean;
 }
 
-export const Input: React.FC<InputProps> = props => {
+export const Input: React.FC<InputProps> = ({
+  name,
+  withFeedback,
+  withLoading,
+  ...props
+}) => {
   const {
     errors,
     values,
@@ -20,7 +25,7 @@ export const Input: React.FC<InputProps> = props => {
     handleChange,
     handleBlur,
   } = useFormikContext();
-  const { name, withFeedback, withLoading } = props;
+
   const error = getIn(errors, name as string);
   const value = getIn(values, name as string);
   const touch = getIn(touched, name as string);
@@ -40,7 +45,7 @@ export const Input: React.FC<InputProps> = props => {
         onChange={handleChange}
         onBlur={handleBlur}
         name={name}
-        invalid={touch && error}
+        invalid={touch && error ? true : false}
       />
       {withFeedback && touch && error ? (
         <FormFeedback>{error}</FormFeedback>
