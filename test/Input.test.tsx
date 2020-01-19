@@ -1,13 +1,13 @@
 import { mount, shallow } from 'enzyme';
 import { Form, Formik } from 'formik';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 import { Input } from '../src';
+import waitFrame from './utils';
 
 describe('Input', () => {
   it('Render Input without crash', () => {
     const wrapper = shallow(
-      <Formik initialValues={{ name: 'name' }} onSubmit={() => {}}>
+      <Formik initialValues={{ name: '' }} onSubmit={() => {}}>
         <Input type="text" name="name" />
       </Formik>
     );
@@ -15,14 +15,23 @@ describe('Input', () => {
     expect(wrapper.find(Input).prop('type')).toEqual('text');
   });
 
-  it('Render Input error message', () => {
-    const waitFrame = async (wrapper: any) => {
-      await act(async () => {
-        await new Promise(resolve => setTimeout(resolve, 0));
-        wrapper.update();
-      });
-    };
+  it('Set component value', () => {
+    const wrapper = mount(
+      <Formik initialValues={{ name: '' }} onSubmit={() => {}}>
+        <Input type="text" name="name" />
+      </Formik>
+    );
 
+    wrapper.find('input').simulate('change', {
+      target: { name: 'name', value: 'new value' },
+    });
+
+    waitFrame(wrapper);
+
+    expect(wrapper.find('input').prop('value')).toEqual('new value');
+  });
+
+  it('Render error message', () => {
     const wrapper = mount(
       <Formik
         initialValues={{ name: 'name' }}
@@ -37,15 +46,38 @@ describe('Input', () => {
       </Formik>
     );
 
-    wrapper
-      .find('form')
-      .at(0)
-      .simulate('submit');
+    wrapper.find('form').simulate('submit');
 
     waitFrame(wrapper);
 
     expect(wrapper.find('.invalid-feedback').text()).toEqual(
       'name is required'
     );
+  });
+
+  it('Render component with undefined value', () => {
+    const wrapper = shallow(
+      <Formik initialValues={{ other: 'other value' }} onSubmit={() => {}}>
+        <Input type="text" name="name" />
+      </Formik>
+    );
+
+    expect(wrapper.find(Input).prop('type')).toEqual('text');
+  });
+
+  it('Set value with intial undefined value', () => {
+    const wrapper = mount(
+      <Formik initialValues={{ other: 'other value' }} onSubmit={() => {}}>
+        <Input type="text" name="name" />
+      </Formik>
+    );
+
+    wrapper.find('input').simulate('change', {
+      target: { name: 'name', value: 'new value' },
+    });
+
+    waitFrame(wrapper);
+
+    expect(wrapper.find('input').prop('value')).toEqual('new value');
   });
 });

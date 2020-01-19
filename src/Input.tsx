@@ -41,7 +41,7 @@ export const Input: React.FC<InputProps> = ({
       <BsInput
         {...props}
         disabled={disabled}
-        value={value}
+        value={value || ''}
         onChange={handleChange}
         onBlur={handleBlur}
         name={name}
