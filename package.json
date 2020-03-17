@@ -34,15 +34,10 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./setupTests.ts"
-    ]
-  },
   "devDependencies": {
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^24.9.0",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
     "@types/reactstrap": "^8.0.6",
@@ -55,6 +50,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "reactstrap": "^8.1.1",
+    "ts-jest": "^24.3.0",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"

@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import { Input, Submit } from '../src';
+import waitFrame from './utils';
 
 describe('Submit', () => {
   it('Render without crash', () => {
@@ -18,13 +19,6 @@ describe('Submit', () => {
   });
 
   it('Submit form without crash', () => {
-    const waitFrame = async (wrapper: any) => {
-      await act(async () => {
-        await new Promise(resolve => setTimeout(resolve, 0));
-        wrapper.update();
-      });
-    };
-
     const wrapper = mount(
       <Formik initialValues={{ name: 'name' }} onSubmit={() => {}}>
         <Form>
