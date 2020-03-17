@@ -134,14 +134,14 @@ const App = () => {
                   name="gender"
                   id="gender-f"
                   value="p"
-                  label="Perempuan"
+                  label="Woman"
                 />
                 <CustomInput
                   type="radio"
                   name="gender"
                   id="gender-m"
                   value="l"
-                  label="Laki-Laki"
+                  label="Man"
                 />
               </FormGroup>
               <FormGroup>

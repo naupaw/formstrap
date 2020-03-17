@@ -86,9 +86,9 @@ export const CustomInput: React.FC<CustomInputProps> = ({
 
   const feedBackInsideChild = () => {
     if (type === 'checkbox' || type === 'switch' || type === 'file') {
-      return true; // feedback()
+      return true;
     } else {
-      return false; //props.children;
+      return false;
     }
   };
 
