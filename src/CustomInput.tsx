@@ -51,6 +51,9 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       case 'radio':
         addProps.checked = props.value === value;
         break;
+      case 'file':
+        addProps.multiple = false;
+        break;
     }
 
     if (!props.id) {
@@ -67,6 +70,15 @@ export const CustomInput: React.FC<CustomInputProps> = ({
         break;
       case 'switch':
         setFieldValue(name as never, e.target.checked ? 1 : 0);
+        break;
+      /**
+       * for now it's only single file upload
+       *
+       * @todo multiple file upload?
+       */
+      case 'file':
+        const file = e.target.files ? e.target.files[0] : null;
+        setFieldValue(name as never, file);
         break;
       default:
         handleChange(e);

@@ -17,6 +17,7 @@ const App = () => {
     accepted: false,
   });
   const onSubmit = (values, { setSubmitting }) => {
+    console.log('values', values);
     setTimeout(() => {
       setData(values);
       setSubmitting(false);
@@ -24,7 +25,7 @@ const App = () => {
   };
 
   const onValidate = values => {
-    const errors = {};
+    const errors: any = {};
     if (!values.username) {
       errors.username = 'Pleae fill username';
     }
