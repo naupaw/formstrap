@@ -71,7 +71,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     }
 
     return addProps;
-  }, [props, value, propsValue, name]);
+  }, [props, value, propsValue, name, type]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (type) {
