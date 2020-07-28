@@ -82,4 +82,22 @@ describe('CustomInput', () => {
 
     expect(wrapper.find('input').prop('checked')).toEqual(true);
   });
+
+  it('Custom Select with selected value', () => {
+    const wrapper = mount(
+      <Formik initialValues={{ option: '2' }} onSubmit={() => {}}>
+        <Form>
+          <CustomInput type="select" name="option">
+            <option value="1">Metallica</option>
+            <option value="2">Dream Theater</option>
+            <option value="3">Iron Maiden</option>
+          </CustomInput>
+        </Form>
+      </Formik>
+    );
+
+    waitFrame(wrapper);
+
+    expect(wrapper.find('select').props().value).toBe('2');
+  });
 });

@@ -1,5 +1,5 @@
 import { getIn, useFormikContext } from 'formik';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import {
   FormFeedback,
   Input as BsInput,
@@ -36,12 +36,19 @@ export const Input: React.FC<InputProps> = ({
     disabled = true;
   }
 
+  const returnedValue = useMemo(() => {
+    if (props.type === 'number') {
+      return value || 0;
+    }
+    return value || '';
+  }, [value, props.type]);
+
   return (
     <Fragment>
       <BsInput
         {...props}
         disabled={disabled}
-        value={value || ''}
+        value={returnedValue}
         onChange={handleChange}
         onBlur={handleBlur}
         name={name}

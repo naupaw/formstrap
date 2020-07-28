@@ -14,6 +14,8 @@ const App = () => {
     gender: 'l',
     switcher: 1,
     type: 'untyped',
+    concert: '2',
+    myNumber: 0,
     accepted: false,
   });
   const onSubmit = (values, { setSubmitting }) => {
@@ -128,6 +130,18 @@ const App = () => {
                   <option value="read">Read</option>
                   <option value="unread">Unread</option>
                 </CustomInput>
+              </FormGroup>
+              <FormGroup>
+                <Label>Upcoming Concert</Label>
+                <CustomInput type="select" name="concert">
+                  <option value="1">Metallica</option>
+                  <option value="2">Dream Theater</option>
+                  <option value="3">Iron Maiden</option>
+                </CustomInput>
+              </FormGroup>
+              <FormGroup>
+                <Label>The Number of the beast</Label>
+                <Input type="number" name="myNumber" />
               </FormGroup>
               <FormGroup>
                 <CustomInput

@@ -1,5 +1,5 @@
 import { getIn, useFormikContext } from 'formik';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import {
   CustomInput as BsCustomInput,
   CustomInputProps as BsCustomInputProps,
@@ -16,6 +16,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   withLoading,
   withFeedback,
   type,
+  value: propsValue,
   ...props
 }) => {
   const {
@@ -37,23 +38,32 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     disabled = true;
   }
 
-  const additionalProps = () => {
+  const additionalProps = useMemo(() => {
     const addProps: any = {};
+    let usingCustomValue = false;
     switch (type) {
       case 'checkbox':
         addProps.checked =
           value === '1' || value === 1 || value === true ? true : false;
+        usingCustomValue = true;
         break;
       case 'switch':
         addProps.checked =
           value === '1' || value === 1 || value === true ? true : false;
+        usingCustomValue = true;
         break;
       case 'radio':
-        addProps.checked = props.value === value;
+        addProps.checked = propsValue === value;
+        usingCustomValue = true;
         break;
       case 'file':
         addProps.multiple = false;
+        usingCustomValue = true;
         break;
+    }
+
+    if (!usingCustomValue) {
+      addProps.value = value;
     }
 
     if (!props.id) {
@@ -61,15 +71,23 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     }
 
     return addProps;
-  };
+  }, [props, value, propsValue]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (type) {
       case 'checkbox':
-        setFieldValue(name as never, e.target.checked ? 1 : 0);
+        if (typeof value === 'number') {
+          setFieldValue(name as string, e.target.checked ? 1 : 0);
+        } else {
+          setFieldValue(name as string, e.target.checked ? '1' : '0');
+        }
         break;
       case 'switch':
-        setFieldValue(name as never, e.target.checked ? 1 : 0);
+        if (typeof value === 'number') {
+          setFieldValue(name as string, e.target.checked ? 1 : 0);
+        } else {
+          setFieldValue(name as string, e.target.checked ? '1' : '0');
+        }
         break;
       /**
        * for now it's only single file upload
@@ -78,7 +96,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
        */
       case 'file':
         const file = e.target.files ? e.target.files[0] : null;
-        setFieldValue(name as never, file);
+        setFieldValue(name as string, file);
         break;
       default:
         handleChange(e);
@@ -86,29 +104,32 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     }
   };
 
-  const feedback = () => (
-    <Fragment>
-      {withFeedback && touch && error ? (
-        <FormFeedback>{error}</FormFeedback>
-      ) : (
-        ''
-      )}
-    </Fragment>
+  const feedback = useMemo(
+    () => (
+      <Fragment>
+        {withFeedback && touch && error ? (
+          <FormFeedback>{error}</FormFeedback>
+        ) : (
+          ''
+        )}
+      </Fragment>
+    ),
+    [withFeedback, touch, error]
   );
 
-  const feedBackInsideChild = () => {
+  const feedBackInsideChild = useMemo(() => {
     if (type === 'checkbox' || type === 'switch' || type === 'file') {
       return true;
     } else {
       return false;
     }
-  };
+  }, [type]);
 
   return (
     <Fragment>
       <BsCustomInput
         {...props}
-        {...additionalProps()}
+        {...additionalProps}
         name={name}
         type={type}
         disabled={disabled}
@@ -116,9 +137,9 @@ export const CustomInput: React.FC<CustomInputProps> = ({
         onBlur={handleBlur}
         invalid={touch && error ? true : false}
       >
-        {feedBackInsideChild() ? feedback() : props.children}
+        {feedBackInsideChild ? feedback : props.children}
       </BsCustomInput>
-      {!feedBackInsideChild() && feedback()}
+      {!feedBackInsideChild && feedback}
     </Fragment>
   );
 };

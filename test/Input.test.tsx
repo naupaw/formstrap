@@ -80,4 +80,32 @@ describe('Input', () => {
 
     expect(wrapper.find('input').prop('value')).toEqual('new value');
   });
+
+  it('Set number components value with zero 0 number value', () => {
+    const wrapper = mount(
+      <Formik initialValues={{ numValue: 0 }} onSubmit={() => {}}>
+        <Input type="number" name="numValue" />
+      </Formik>
+    );
+
+    waitFrame(wrapper);
+
+    expect(wrapper.find('input').prop('value')).toEqual(0);
+  });
+
+  it('Select with selected value', () => {
+    const wrapper = mount(
+      <Formik initialValues={{ concert: '2' }} onSubmit={() => {}}>
+        <Input type="select" name="concert">
+          <option value="1">Metallica</option>
+          <option value="2">Dream Theater</option>
+          <option value="3">Iron Maiden</option>
+        </Input>
+      </Formik>
+    );
+
+    waitFrame(wrapper);
+
+    expect(wrapper.find('select').props().value).toBe('2');
+  });
 });
