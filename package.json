@@ -1,6 +1,6 @@
 {
   "name": "formstrap",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "author": "pedox",
   "main": "dist/index.js",
