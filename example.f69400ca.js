@@ -56012,13 +56012,15 @@ var CustomInput = function CustomInput(_ref) {
     }
 
     return addProps;
-  }, [props, value, propsValue]);
+  }, [props, value, propsValue, name, type]);
 
   var onChange = function onChange(e) {
     switch (type) {
       case 'checkbox':
         if (typeof value === 'number') {
           setFieldValue(name, e.target.checked ? 1 : 0);
+        } else if (typeof value === 'boolean') {
+          setFieldValue(name, e.target.checked ? true : false);
         } else {
           setFieldValue(name, e.target.checked ? '1' : '0');
         }
@@ -56028,6 +56030,8 @@ var CustomInput = function CustomInput(_ref) {
       case 'switch':
         if (typeof value === 'number') {
           setFieldValue(name, e.target.checked ? 1 : 0);
+        } else if (typeof value === 'boolean') {
+          setFieldValue(name, e.target.checked ? true : false);
         } else {
           setFieldValue(name, e.target.checked ? '1' : '0');
         }
@@ -56230,7 +56234,7 @@ var App = function App() {
     username: '',
     email: '',
     gender: 'l',
-    switcher: 1,
+    switcher: true,
     type: 'untyped',
     concert: '2',
     myNumber: 0,
@@ -56389,7 +56393,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38283" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43229" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
