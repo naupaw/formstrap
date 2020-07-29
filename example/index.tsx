@@ -12,7 +12,7 @@ const App = () => {
     username: '',
     email: '',
     gender: 'l',
-    switcher: 1,
+    switcher: true,
     type: 'untyped',
     concert: '2',
     myNumber: 0,

@@ -78,6 +78,8 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       case 'checkbox':
         if (typeof value === 'number') {
           setFieldValue(name as string, e.target.checked ? 1 : 0);
+        } else if (typeof value === 'boolean') {
+          setFieldValue(name as string, e.target.checked ? true : false);
         } else {
           setFieldValue(name as string, e.target.checked ? '1' : '0');
         }
@@ -85,6 +87,8 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       case 'switch':
         if (typeof value === 'number') {
           setFieldValue(name as string, e.target.checked ? 1 : 0);
+        } else if (typeof value === 'boolean') {
+          setFieldValue(name as string, e.target.checked ? true : false);
         } else {
           setFieldValue(name as string, e.target.checked ? '1' : '0');
         }
