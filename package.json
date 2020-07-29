@@ -1,11 +1,16 @@
 {
   "name": "formstrap",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "author": "pedox",
   "main": "dist/index.js",
   "module": "dist/formstrap.esm.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://pedox.github.io/formstrap/",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedox/formstrap.git"
+  },
   "files": [
     "dist"
   ],
