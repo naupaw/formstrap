@@ -24,10 +24,10 @@
   },
   "peerDependencies": {
     "@types/jest": "^24.9.0",
-    "bootstrap": "^4.4.1",
-    "formik": "^2.0.6",
+    "bootstrap": "^4.5.3",
+    "formik": "^2.2.1",
     "react": ">=16",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.7.0"
   },
   "husky": {
     "hooks": {
@@ -45,19 +45,18 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
-    "@types/reactstrap": "^8.0.6",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "formik": "^2.0.6",
+    "formik": "^2.2.1",
     "gh-pages": "^2.1.1",
-    "husky": "^3.1.0",
+    "husky": "^4.3.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "reactstrap": "^8.1.1",
+    "reactstrap": "^8.7.0",
     "ts-jest": "^24.3.0",
     "tsdx": "^0.13.2",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.2"
+    "typescript": "^4.0.5"
   }
 }

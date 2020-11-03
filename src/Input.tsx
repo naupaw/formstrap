@@ -1,17 +1,13 @@
 import { getIn, useFormikContext } from 'formik';
 import React, { Fragment, useMemo } from 'react';
-import {
-  FormFeedback,
-  Input as BsInput,
-  InputProps as BsInputProps,
-} from 'reactstrap';
+import { FormFeedback, Input as BsInput, InputProps } from 'reactstrap';
 
-export interface InputProps extends BsInputProps {
+export interface FSInputProps extends InputProps {
   withLoading?: boolean;
   withFeedback?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input: React.FC<FSInputProps> = ({
   name,
   withFeedback,
   withLoading,

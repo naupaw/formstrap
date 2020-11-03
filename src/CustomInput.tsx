@@ -2,16 +2,18 @@ import { getIn, useFormikContext } from 'formik';
 import React, { Fragment, useMemo } from 'react';
 import {
   CustomInput as BsCustomInput,
-  CustomInputProps as BsCustomInputProps,
+  CustomInputProps,
   FormFeedback,
 } from 'reactstrap';
 
-export interface CustomInputProps extends BsCustomInputProps {
+/** @ts-ignore */
+export interface FSCustomInputProps extends CustomInputProps {
+  id?: string | number;
   withLoading?: boolean;
   withFeedback?: boolean;
 }
 
-export const CustomInput: React.FC<CustomInputProps> = ({
+export const CustomInput: React.FC<FSCustomInputProps> = ({
   name,
   withLoading,
   withFeedback,
@@ -101,6 +103,9 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       case 'file':
         const file = e.target.files ? e.target.files[0] : null;
         setFieldValue(name as string, file);
+        break;
+      case 'radio':
+        setFieldValue(name as string, propsValue);
         break;
       default:
         handleChange(e);
